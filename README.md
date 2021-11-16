@@ -10,6 +10,14 @@
 
 # As always, More info coming soon!
 
+# Images
+![tire](https://i.imgur.com/pgVG7J2.png)
+![turbo](https://i.imgur.com/SIi8Giu.png)
+![headlights](https://i.imgur.com/sR4cTcP.png)
+![coilovers](https://i.imgur.com/8cKOTFK.png)
+![coilover_wrenches](https://i.imgur.com/sZSHFnY.png)
+
+
 
 # Required
 - qb-core/shared.lua info
@@ -18,5 +26,6 @@
 	["turbo"] 		 	 		 	 = {["name"] = "turbo", 						["label"] = "Garrett Turbo", 			["weight"] = 1000, 	["type"] = "item", 		["image"] = "turbo.png", 				["unique"] = false, 	["useable"] = true, 	["shouldClose"] = true,    ["combinable"] = nil,   	["description"] = "Who doesn't need a 65mm Turbo??"},
 	["headlights"] 		 	 		 = {["name"] = "headlights", 					["label"] = "Xenon Headlights", 		["weight"] = 1000, 	["type"] = "item", 		["image"] = "headlights.png", 			["unique"] = false, 	["useable"] = true, 	["shouldClose"] = true,    ["combinable"] = nil,   	["description"] = "All the hotboys in town have a pair of these"},
 	["coilovers"] 		 	 		 = {["name"] = "coilovers", 					["label"] = "Coilovers", 				["weight"] = 1000, 	["type"] = "item", 		["image"] = "coilovers.png", 			["unique"] = false, 	["useable"] = true, 	["shouldClose"] = true,    ["combinable"] = nil,   	["description"] = "All the hotboys in town have a pair of these"},
+	["coilover_wrenches"] 		 	 = {["name"] = "coilover_wrenches", 			["label"] = "Coilover Wrenches", 		["weight"] = 1000, 	["type"] = "item", 		["image"] = "coilover_wrenches.png", 	["unique"] = false, 	["useable"] = true, 	["shouldClose"] = true,    ["combinable"] = nil,   	["description"] = "Wrenches that are reqired to adjust coilovers"},
 
 ```
