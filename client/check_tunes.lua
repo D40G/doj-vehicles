@@ -83,8 +83,7 @@ function checkVehicleMods()
 				TriggerServerEvent('qb-phone:server:sendNewMail', {
 					sender = "Tuning List",
 					subject = "Vehicle Diagnostics",
-					message = "Model: "..modelName.."</p>Tint: "..tostring(vehProps.windowTint).. "/6</p>Brakes: "..tostring(vehProps.modBrakes).. "/" .. GetNumVehicleMods(vehicle, 12).."</p>Engine: "..tostring(vehProps.modEngine).. "/" .. GetNumVehicleMods(vehicle,11).."</p>Suspension: "..tostring(vehProps.modSuspension).. "/" .. GetNumVehicleMods(vehicle,15).."</p>Transmission: "..tostring(vehProps.modTransmission).. "/" .. GetNumVehicleMods(vehicle,13).."</p>Turbo: "..tostring(vehProps.modTurbo).."</p>Xenons: "..tostring(vehProps.modXenon),
-					button = {}
+					message = "Model: "..modelName.."<br />Tint: "..tostring(vehProps.windowTint).. "/6<br />Brakes: "..tostring(vehProps.modBrakes).. "/" .. GetNumVehicleMods(vehicle, 12).."<br />Engine: "..tostring(vehProps.modEngine).. "/" .. GetNumVehicleMods(vehicle,11).."<br />Suspension: "..tostring(vehProps.modSuspension).. "/" .. GetNumVehicleMods(vehicle,15).."<br />Transmission: "..tostring(vehProps.modTransmission).. "/" .. GetNumVehicleMods(vehicle,13).."<br />Turbo: "..tostring(vehProps.modTurbo).."<br />Xenons: "..tostring(vehProps.modXenon),
 				})
 				QBCore.Functions.Notify("Vehicle Mod List Recieved", "success")
 			else
