@@ -17,7 +17,13 @@ RegisterNetEvent('doj:client:coiloverMenu', function()
 			vehicle = GetClosestVehicle(coords.x, coords.y, coords.z, 3.5, 0, 71)
 		end
 		if DoesEntityExist(vehicle) then
-            coiloverMenu()
+            QBCore.Functions.TriggerCallback('QBCore:HasItem', function(HasItem)
+                if HasItem then
+                    coiloverMenu()
+                else
+                    QBCore.Functions.Notify("You are missing a coilover wrench", "error", 3500)
+                end
+            end, 'coilover_wrenches') 
 		end
 	else
 		QBCore.Functions.Notify("There is no vehicle nearby", "error", 3500)
