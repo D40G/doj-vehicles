@@ -21,7 +21,7 @@ RegisterNetEvent('doj:client:coiloverMenu', function()
                 if HasItem then
                     coiloverMenu()
                 else
-                    QBCore.Functions.Notify("You are missing a coilover wrench", "error", 3500)
+                    QBCore.Functions.Notify("You are missing coilover wrenches", "error", 3500)
                 end
             end, 'coilover_wrenches') 
 		end
