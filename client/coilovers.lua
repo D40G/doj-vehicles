@@ -3,20 +3,16 @@ local QBCore = exports['qb-core']:GetCoreObject()
 
 RegisterNetEvent('doj:client:coiloverMenu', function() 
     local playerPed	= PlayerPedId()
-    local coords = GetEntityCoords(playerPed)
     if IsPedSittingInAnyVehicle(playerPed) then
 		QBCore.Functions.Notify("Cannot adjust coilovers while inside vehicle", "error", 3500)
         ClearPedTasks(playerPed)
         return
     end
-	if IsAnyVehicleNearPoint(coords.x, coords.y, coords.z, 3.0) then
-		local vehicle = nil
-		if IsPedInAnyVehicle(playerPed, false) then
-			vehicle = GetVehiclePedIsIn(playerPed, false)
-		else
-			vehicle = GetClosestVehicle(coords.x, coords.y, coords.z, 3.5, 0, 71)
-		end
-		if DoesEntityExist(vehicle) then
+    local coords = GetEntityCoords(playerPed)
+    local vehicle = GetClosestVehicle(coords.x, coords.y, coords.z, 3.0, 0, 71)
+    if vehicle ~= nil then
+        local tire = GetClosestVehicleTire(vehicle)
+        if tire ~= nil then 
             QBCore.Functions.TriggerCallback('QBCore:HasItem', function(HasItem)
                 if HasItem then
                     coiloverMenu()
@@ -24,10 +20,10 @@ RegisterNetEvent('doj:client:coiloverMenu', function()
                     QBCore.Functions.Notify("You are missing coilover wrenches", "error", 3500)
                 end
             end, 'coilover_wrenches') 
-		end
-	else
-		QBCore.Functions.Notify("There is no vehicle nearby", "error", 3500)
-	end
+        else
+            QBCore.Functions.Notify("Move closer to a wheel", "error", 3500)
+        end
+    end
 end)
 
 RegisterNetEvent('doj:client:applyCoilovers', function(args) 
