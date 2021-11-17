@@ -16,6 +16,7 @@ RegisterNetEvent('doj:client:coiloverMenu', function()
             QBCore.Functions.TriggerCallback('QBCore:HasItem', function(HasItem)
                 if HasItem then
                     coiloverMenu()
+                    TaskStartScenarioInPlace(playerPed, "CODE_HUMAN_MEDIC_KNEEL", 0, true)
                 else
                     QBCore.Functions.Notify("You are missing coilover wrenches", "error", 3500)
                 end
@@ -42,7 +43,7 @@ exports['qb-target']:AddTargetBone(wheels, {
     options = {
         {
             event = "doj:client:coiloverMenu",
-            icon = "fas fa-circle",
+            icon = "fas fa-wrench",
             label = "Adjust Coilovers",
             item = 'coilovers',
         },
@@ -71,6 +72,7 @@ RegisterNetEvent('doj:client:applyCoilovers', function(args)
         exports['qb-menu']:closeMenu()
         CurrentVehicleData = QBCore.Functions.GetVehicleProperties(vehicle)
         TriggerServerEvent('updateVehicle', CurrentVehicleData)
+        ClearPedTasks(playerPed)
     end
 end)
 
