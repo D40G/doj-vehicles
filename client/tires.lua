@@ -20,7 +20,7 @@ function GetClosestVehicleTire(vehicle)
 	local player = PlayerId()
 	local plyPed = GetPlayerPed(player)
 	local plyPos = GetEntityCoords(plyPed, false)
-	local minDistance = 1.0
+	local minDistance = 1.2
 	local closestTire = nil
 	for a = 1, #tireBones do
 		local bonePos = GetWorldPositionOfEntityBone(vehicle, GetEntityBoneIndexByName(vehicle, tireBones[a]))
