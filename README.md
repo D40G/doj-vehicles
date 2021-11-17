@@ -20,7 +20,24 @@
 
 
 # Required
-- qb-core/shared.lua info
+
+**[textUi](https://github.com/dojwun/textUi)**
+
+**[qb-menu](https://github.com/qbcore-framework/qb-menu)**
+
+
+**[qb-target](https://github.com/BerkieBb/berkie-target)**
+
+### Skillbars
+
+**[qb-skillbar](https://github.com/qbcore-framework/qb-skillbar)**
+
+**[reload-skillbar](https://github.com/Utinax/reload-skillbar)**
+
+**[np-skillbar](https://drive.google.com/drive/folders/17xznaEcn5rmP0aOKL5XIj6SIfqQVB8iH?usp=sharing)**
+
+
+### qb-core/shared.lua info
 ```
 	["tire"] 				 		 = {["name"] = "tire", 			  	  			["label"] = "Spare Tire", 				["weight"] = 1000, 	["type"] = "item", 		["image"] = "tire.png", 				["unique"] = false, 	["useable"] = true, 	["shouldClose"] = true,	   ["combinable"] = nil,   ["description"] =  "Got a popped tire? Here is a Spare tire"},
 	["turbo"] 		 	 		 	 = {["name"] = "turbo", 						["label"] = "Garrett Turbo", 			["weight"] = 1000, 	["type"] = "item", 		["image"] = "turbo.png", 				["unique"] = false, 	["useable"] = true, 	["shouldClose"] = true,    ["combinable"] = nil,   	["description"] = "Who doesn't need a 65mm Turbo??"},
