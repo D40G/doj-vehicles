@@ -26,6 +26,30 @@ RegisterNetEvent('doj:client:coiloverMenu', function()
     end
 end)
 
+local wheels = {
+    "wheel_lf",
+    "wheel_rf",
+    "wheel_lm1",
+    "wheel_rm1",
+    "wheel_lm2",
+    "wheel_rm2",
+    "wheel_lm3",
+    "wheel_rm3",
+    "wheel_lr",
+    "wheel_rr",
+}
+exports['qb-target']:AddTargetBone(wheels, {
+    options = {
+        {
+            event = "doj:client:coiloverMenu",
+            icon = "fas fa-circle",
+            label = "Adjust Coilovers",
+            item = 'coilovers',
+        },
+    },
+    distance = 1.5
+})
+
 RegisterNetEvent('doj:client:applyCoilovers', function(args) 
     local args = tonumber(args)
     local playerPed	= PlayerPedId()
