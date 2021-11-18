@@ -20,8 +20,6 @@ RegisterNetEvent('doj:client:applyXenons', function()
 		end
 		if DoesEntityExist(vehicle) then
 			playAnim("mini@repair", "fixing_a_ped", 35000)
-			SetVehicleEngineOn(vehicle, false, false,true)
-			SetVehicleDoorOpen(vehicle, 4, false, false)
 			if Config.skillbarXenons == "reload-skillbar" then
 				local finished = exports["reload-skillbar"]:taskBar(math.random(5000,7500),math.random(2,4))
 				if finished ~= 100 then
@@ -101,3 +99,184 @@ RegisterNetEvent('doj:client:applyXenons', function()
 		QBCore.Functions.Notify("There is no vehicle nearby", "error", 3500)
 	end
 end)
+
+RegisterNetEvent('doj:client:xenonMenu', function()
+	local playerPed	= PlayerPedId()
+	if IsPedSittingInAnyVehicle(playerPed) then
+		xenonControllerMenu()
+	else
+		QBCore.Functions.Notify("You need to be inside a vehicle to use this", "error", 3500)
+    end
+end)
+
+RegisterNetEvent('doj:client:applyXenonColor', function(args) 
+    local args = tonumber(args)
+    local playerPed	= PlayerPedId()
+	local vehicle = GetVehiclePedIsIn(playerPed, false)
+    xenonControllerMenu()
+	if args == 1 then 
+		SetVehicleHeadlightsColour(vehicle, 0)
+    elseif args == 2 then 
+		SetVehicleHeadlightsColour(vehicle, -1)      
+    elseif args == 3 then 
+		SetVehicleHeadlightsColour(vehicle, 1)    
+    elseif args == 4 then 
+		SetVehicleHeadlightsColour(vehicle, 2)    
+    elseif args == 5 then
+		SetVehicleHeadlightsColour(vehicle, 3)
+	elseif args == 6 then
+		SetVehicleHeadlightsColour(vehicle, 4)    
+	elseif args == 7 then
+		SetVehicleHeadlightsColour(vehicle, 5)    
+	elseif args == 8 then
+		SetVehicleHeadlightsColour(vehicle, 6)    
+	elseif args == 9 then
+		SetVehicleHeadlightsColour(vehicle, 7)    
+	elseif args == 10 then
+		SetVehicleHeadlightsColour(vehicle, 8)    
+	elseif args == 11 then
+		SetVehicleHeadlightsColour(vehicle, 9)   
+	elseif args == 12 then
+		SetVehicleHeadlightsColour(vehicle, 10)    
+	elseif args == 13 then
+		SetVehicleHeadlightsColour(vehicle, 11)    
+	elseif args == 14 then
+		SetVehicleHeadlightsColour(vehicle, 12)    
+    else
+        ClearPedTasks(playerPed)
+        exports['qb-menu']:closeMenu()
+        CurrentVehicleData = QBCore.Functions.GetVehicleProperties(vehicle)
+        TriggerServerEvent('updateVehicle', CurrentVehicleData)
+    end
+end)
+
+function xenonControllerMenu()
+    exports['qb-menu']:openMenu({
+		{
+            header = "Xenon Menu",
+            txt = "adjust vehicle headlight color",
+            isMenuHeader = true
+        },
+		{
+            header = "Stock",
+            txt = "",
+            params = {
+                event = "doj:client:applyXenonColor",
+				args = 1
+            }
+        },
+        {
+            header = "Ice blue",
+            txt = "",
+            params = {
+                event = "doj:client:applyXenonColor",
+				args = 2
+            }
+        },
+		{
+            header = "Blue",
+            txt = "",
+            params = {
+                event = "doj:client:applyXenonColor",
+				args = 3
+            }
+        },
+		{
+            header = "Electric Blue",
+            txt = "",
+            params = {
+                event = "doj:client:applyXenonColor",
+				args = 4
+            }
+        },
+		{
+            header = "Mint Green",
+            txt = "",
+            params = {
+                event = "doj:client:applyXenonColor",
+				args = 5
+            }
+        },
+		{
+            header = "Lime Green",
+            txt = "",
+            params = {
+                event = "doj:client:applyXenonColor",
+				args = 6
+            }
+        },
+		{
+            header = "Yellow",
+            txt = "",
+            params = {
+                event = "doj:client:applyXenonColor",
+				args = 7
+            }
+        },
+		{
+            header = "Golden",
+            txt = "",
+            params = {
+                event = "doj:client:applyXenonColor",
+				args = 8
+            }
+        },
+		{
+            header = "Orange",
+            txt = "",
+            params = {
+                event = "doj:client:applyXenonColor",
+				args = 9
+            }
+        },
+		{
+            header = "Red",
+            txt = "",
+            params = {
+                event = "doj:client:applyXenonColor",
+				args = 10
+            }
+        },
+		{
+            header = "Pony Pink ",
+            txt = "",
+            params = {
+                event = "doj:client:applyXenonColor",
+				args = 11
+            }
+        },
+		{
+            header = "Hot Pink",
+            txt = "",
+            params = {
+                event = "doj:client:applyXenonColor",
+				args = 12
+            }
+        },
+		{
+            header = "Purple",
+            txt = "",
+            params = {
+                event = "doj:client:applyXenonColor",
+				args = 13
+            }
+        },
+		{
+            header = "Blacklight",
+            txt = "",
+            params = {
+                event = "doj:client:applyXenonColor",
+				args = 14
+            }
+        },
+        {
+            header = "Close",
+            txt = "",
+            params = {
+                event = "doj:client:applyXenonColor",
+				args = 15
+            }
+        },
+    })
+end
+
