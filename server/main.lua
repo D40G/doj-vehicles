@@ -11,7 +11,7 @@ end)
 
 QBCore.Functions.CreateUseableItem("turbo", function(source, item)
     local Player = QBCore.Functions.GetPlayer(source)
-	TriggerClientEvent("doj:client:applyTurbo", source)
+	TriggerClientEvent("doj:client:applyTurbo", source) 
 end)
 
 --========================================================== Headlights
@@ -27,11 +27,15 @@ QBCore.Functions.CreateUseableItem("headlights", function(source, item)
 	TriggerClientEvent("doj:client:applyXenons", source)
 end)
 
+QBCore.Functions.CreateUseableItem("hid_controller", function(source, item)
+    local Player = QBCore.Functions.GetPlayer(source)
+    TriggerClientEvent('doj:client:xenonMenu', source)
+end)
 
 --========================================================== Tire Repair
 QBCore.Functions.CreateUseableItem("tire", function(source, item)
     local Player = QBCore.Functions.GetPlayer(source)
-    TriggerClientEvent('doj:client:replacePoppedTire', source)
+    TriggerClientEvent('doj:client:replacePoppedTire', source) 
 end)
 
 RegisterServerEvent('doj:server:removeTire', function()
@@ -42,19 +46,15 @@ RegisterServerEvent('doj:server:removeTire', function()
 end)
 
 --========================================================== suspension
+
 QBCore.Functions.CreateUseableItem("coilovers", function(source, item)
     local Player = QBCore.Functions.GetPlayer(source)
     TriggerClientEvent('doj:client:coiloverMenu', source)
 end)
 
--- RegisterServerEvent('doj:server:removeCoilovers', function()
---     local Player = QBCore.Functions.GetPlayer(source)
---     Player.Functions.RemoveItem('coilovers', 1)
---     TriggerClientEvent('inventory:client:ItemBox', source, QBCore.Shared.Items['coilovers'], "remove", 1)
---     TriggerClientEvent('QBCore:Notify', source, "suspension installed", 'success')
--- end)
+--========================================================== Neons
 
-
-
-
-
+QBCore.Functions.CreateUseableItem("underglow_controller", function(source, item)
+    local Player = QBCore.Functions.GetPlayer(source)
+    TriggerClientEvent('doj:client:openNeonMenu', source)
+end)
