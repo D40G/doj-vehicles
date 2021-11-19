@@ -51,4 +51,4 @@
 	["underglow_controller"] 		 = {["name"] = "underglow_controller", 			["label"] = "Neon Controller", 			["weight"] = 1000, 	["type"] = "item", 		["image"] = "underglow_controller.png", ["unique"] = false, 	["useable"] = true, 	["shouldClose"] = true,    ["combinable"] = nil,   	["description"] = "Rgb Underglow Controller"},
 	["tint_supplies"] 				 = {["name"] = "tint_supplies", 			  	["label"] = "Tint Supplies", 			["weight"] = 1000, 	["type"] = "item", 		["image"] = "tint_supplies.png", 		["unique"] = false, 	["useable"] = true, 	["shouldClose"] = true,	   ["combinable"] = nil,    ["description"] = "Supplies for window tinting"},
 
-```
+``` 
