@@ -10,13 +10,25 @@ RegisterNetEvent('doj:client:coiloverMenu', function()
     end
     local coords = GetEntityCoords(playerPed)
     local vehicle = GetClosestVehicle(coords.x, coords.y, coords.z, 3.0, 0, 71)
+    local plate = GetVehicleNumberPlateText(vehicle)
     if vehicle ~= nil then
         local tire = GetClosestVehicleTire(vehicle)
         if tire ~= nil then 
             QBCore.Functions.TriggerCallback('QBCore:HasItem', function(HasItem)
                 if HasItem then
-                    coiloverMenu()
-                    TaskStartScenarioInPlace(playerPed, "CODE_HUMAN_MEDIC_KNEEL", 0, true)
+                    if Config.isVehicleOwned then
+                        QBCore.Functions.TriggerCallback('qb-garage:server:checkVehicleOwner', function(owned)
+                            if owned then
+                                coiloverMenu()
+                                TaskStartScenarioInPlace(playerPed, "CODE_HUMAN_MEDIC_KNEEL", 0, true) 
+                            else
+                                QBCore.Functions.Notify("Nobody owns this vehicle", "error", 3500)
+                            end
+                        end, plate)
+                    else
+                        coiloverMenu()
+                        TaskStartScenarioInPlace(playerPed, "CODE_HUMAN_MEDIC_KNEEL", 0, true) 
+                    end
                 else
                     QBCore.Functions.Notify("You are missing coilover wrenches", "error", 3500)
                 end
@@ -72,7 +84,6 @@ RegisterNetEvent('doj:client:applyCoilovers', function(args)
         exports['qb-menu']:closeMenu()
         CurrentVehicleData = QBCore.Functions.GetVehicleProperties(vehicle)
         TriggerServerEvent('updateVehicle', CurrentVehicleData)
-        ClearPedTasks(playerPed)
     end
 end)
 
