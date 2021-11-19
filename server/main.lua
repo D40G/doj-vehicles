@@ -38,7 +38,7 @@ QBCore.Functions.CreateUseableItem("tire", function(source, item)
     TriggerClientEvent('doj:client:replacePoppedTire', source) 
 end)
 
-RegisterServerEvent('doj:server:removeTire', function()
+RegisterNetEvent('doj:server:removeTire', function()
     local Player = QBCore.Functions.GetPlayer(source)
     Player.Functions.RemoveItem('tire', 1)
     TriggerClientEvent('inventory:client:ItemBox', source, QBCore.Shared.Items['tire'], "remove", 1)
@@ -57,4 +57,17 @@ end)
 QBCore.Functions.CreateUseableItem("underglow_controller", function(source, item)
     local Player = QBCore.Functions.GetPlayer(source)
     TriggerClientEvent('doj:client:openNeonMenu', source)
+end)
+
+--========================================================== Windowtint
+
+QBCore.Functions.CreateUseableItem("tint_supplies", function(source, item)
+    local Player = QBCore.Functions.GetPlayer(source)
+    TriggerClientEvent('doj:client:openWindowTintMenu', source)
+end)
+
+RegisterNetEvent('doj:server:removeTintSupplies', function()
+    local Player = QBCore.Functions.GetPlayer(source)
+    Player.Functions.RemoveItem('tint_supplies', 1)
+    TriggerClientEvent('inventory:client:ItemBox', source, QBCore.Shared.Items['tint_supplies'], "remove", 1)
 end)
