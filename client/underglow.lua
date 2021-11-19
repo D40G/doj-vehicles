@@ -4,7 +4,19 @@ local QBCore = exports['qb-core']:GetCoreObject()
 RegisterNetEvent('doj:client:openNeonMenu', function()
     local playerPed	= PlayerPedId()
 	if IsPedSittingInAnyVehicle(playerPed) then
-        TriggerEvent("doj:client:neonMenu")
+        local vehicle = GetVehiclePedIsIn(playerPed)
+        local plate = GetVehicleNumberPlateText(vehicle)
+        if Config.isVehicleOwned then
+            QBCore.Functions.TriggerCallback('qb-garage:server:checkVehicleOwner', function(owned)
+                if owned then
+                    TriggerEvent("doj:client:neonMenu")
+                else
+                    QBCore.Functions.Notify("Nobody owns this vehicle", "error", 3500)
+                end
+            end, plate)
+        else
+            TriggerEvent("doj:client:neonMenu")
+        end
 	else
 		QBCore.Functions.Notify("You need to be inside a vehicle to use this", "error", 3500)
     end
@@ -31,7 +43,6 @@ end)
 RegisterNetEvent('doj:client:applyNeonColor', function(args) 
     local args = tonumber(args)
     local playerPed	= PlayerPedId()
-    local coords = GetEntityCoords(playerPed)
     local vehicle = GetVehiclePedIsIn(playerPed)
     TriggerEvent("doj:client:neonColorMenu")
 	if args == 1 then 
