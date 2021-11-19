@@ -39,12 +39,27 @@ RegisterNetEvent('doj:client:checkVehicleMods', function()
 	local ped = PlayerPedId()
 	local veh = GetVehiclePedIsIn(ped, false)
 	local time = 5000
+	local plate = GetVehicleNumberPlateText(veh)
 	if IsPedInAnyVehicle(ped, false) then
-		exports['progressBars']:drawBar(time, 'Checking for Vehicle Mods...')
-		SetVehicleEngineOn(veh, false, false, true)
-		Wait(time)
-		checkVehicleMods()
-		SetVehicleEngineOn(veh, true, false, false)
+		if Config.isVehicleOwned then
+			QBCore.Functions.TriggerCallback('qb-garage:server:checkVehicleOwner', function(owned)
+				if owned then
+					exports['progressBars']:drawBar(time, 'Checking for Vehicle Mods...')
+					SetVehicleEngineOn(veh, false, false, true)
+					Wait(time)
+					checkVehicleMods()
+					SetVehicleEngineOn(veh, true, false, false) 
+				else
+					QBCore.Functions.Notify("Nobody owns this vehicle", "error", 3500)
+				end
+			end, plate)
+		else
+			exports['progressBars']:drawBar(time, 'Checking for Vehicle Mods...')
+			SetVehicleEngineOn(veh, false, false, true)
+			Wait(time)
+			checkVehicleMods()
+			SetVehicleEngineOn(veh, true, false, false) 
+		end
 	else
         QBCore.Functions.Notify("Cant help you without a vehicle!", "error", 3500)
 	end
