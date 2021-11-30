@@ -44,7 +44,7 @@ RegisterNetEvent('doj:client:checkVehicleMods', function()
 		if Config.isVehicleOwned then
 			QBCore.Functions.TriggerCallback('qb-garage:server:checkVehicleOwner', function(owned)
 				if owned then
-					exports['progressBars']:drawBar(time, 'Checking for Vehicle Mods...')
+					QBCore.Functions.Notify("Checking for Vehicle Mods...", "primary", time)
 					SetVehicleEngineOn(veh, false, false, true)
 					Wait(time)
 					checkVehicleMods()
@@ -54,7 +54,7 @@ RegisterNetEvent('doj:client:checkVehicleMods', function()
 				end
 			end, plate)
 		else
-			exports['progressBars']:drawBar(time, 'Checking for Vehicle Mods...')
+			QBCore.Functions.Notify("Checking for Vehicle Mods...", "primary", time)
 			SetVehicleEngineOn(veh, false, false, true)
 			Wait(time)
 			checkVehicleMods()
