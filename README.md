@@ -1,5 +1,8 @@
 # doj-vehicles
 
+| If you are intested in recieving github updates join the community on **[Discord](https://discord.gg/NVsaunpesE)**! |
+|----|
+
 # Info 
 - Recently added **[Window Tint](https://streamable.com/zs9y1b)**
 - Added **[Xenon color changer](https://streamable.com/76c1wk)**
